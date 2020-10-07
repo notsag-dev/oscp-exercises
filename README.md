@@ -22,3 +22,7 @@ kali@kali:~$ locate wce32.exe
 ```
 find . -type f -mtime -1 ! -user root -exec ls -l {} \; 2>/dev/null
 ```
+
+## 3.1.3.2 (page 53) 
+1. Inspect your bash history and use history expansion to re-run a command from it.
+2. Execute different commands of your choice and experiment browsing the history through the shortcuts as well as the reverse-i-search facility.
