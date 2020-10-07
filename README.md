@@ -26,3 +26,9 @@ find . -type f -mtime -1 ! -user root -exec ls -l {} \; 2>/dev/null
 ## 3.1.3.2 (page 53) 
 1. Inspect your bash history and use history expansion to re-run a command from it.
 2. Execute different commands of your choice and experiment browsing the history through the shortcuts as well as the reverse-i-search facility.
+
+## 3.2.5.1 (page 55) 
+1. Use the cat command in conjunction with sort to reorder the content of the /etc/passwd file on your Kali Linux system.
+`cat /etc/passwd | sort`
+2. Redirect the output of the previous exercise to a file of your choice in your home directory.
+`cat /etc/passwd | sort >> ~/ordered_passwd.txt`
