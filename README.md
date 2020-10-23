@@ -33,7 +33,7 @@ find . -type f -mtime -1 ! -user root -exec ls -l {} \; 2>/dev/null
 2. Redirect the output of the previous exercise to a file of your choice in your home directory.
 `cat /etc/passwd | sort >> ~/ordered_passwd.txt`
 
-# 3.3.5.1 (page 59)
+## 3.3.5.1 (page 59)
 Using /etc/passwd, extract the user and home directory fields for all users on your Kali machine for which the shell is set to /bin/false. Make sure you use a Bash one-liner to print the output to the screen. The output should look similar to Listing 53 below:
 ```
 The user mysql home directory is /nonexistent
