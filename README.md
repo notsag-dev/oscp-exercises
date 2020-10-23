@@ -54,3 +54,13 @@ The user Debian-snmp home directory is /var/lib/snmp
 The user lightdm home directory is /var/lib/lightdm
 ```
 
+Copy the /etc/passwd file to your home directory (/home/kali):
+```
+cp /etc/passwd ~
+```
+
+Use cat in a one-liner to print the output of the /kali/passwd and replace all instances of the
+"Gnome Display Manager" string with "GDM":
+```
+TODO
+```
