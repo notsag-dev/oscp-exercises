@@ -62,5 +62,5 @@ cp /etc/passwd ~
 Use cat in a one-liner to print the output of the /kali/passwd and replace all instances of the
 "Gnome Display Manager" string with "GDM":
 ```
-TODO
+cat passwd | sed 's/Gnome Display Manager/GDM/'
 ```
