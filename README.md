@@ -41,7 +41,8 @@ The user Debian-snmp home directory is /var/lib/snmp
 The user speech-dispatcher home directory is /var/run/speech-dispatcher The user Debian-gdm home directory is /var/lib/gdm3
 ```
 
-```cat /etc/passwd | grep /bin/bash | awk -F ":" '{ printf("The user %s home directory is %s\n", $1, $6)}'```
+Solution
+```cat /etc/passwd | grep /bin/false | awk -F ":" '{ printf("The user %s home directory is %s\n", $1, $6)}'```
 
 Output:
 ```
