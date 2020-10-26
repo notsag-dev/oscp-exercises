@@ -65,7 +65,7 @@ Use cat in a one-liner to print the output of the /kali/passwd and replace all i
 cat passwd | sed 's/Gnome Display Manager/GDM/'
 ```
 
-## 3.5.3.1 (page 64)
+## 3.5.3.1 (page 64)  COMPLETE THIS BORING SHIT
 1. Download the archive from the following URL https://offensive-security.com/pwk-files/scans.tar.gz
 ```
 wget https://offensive-security.com/pwk-files/scans.tar.gz
@@ -152,6 +152,4 @@ kali@kali:~/pwk/scans$ diff -u 10.11.1.118_scan_01.txt 10.11.1.118_scan_02.txt
 +
 ```
 Analyzing the results it is clear that the server was down for the first run of nmap and up for the second one.
-
-# COMPLETE THIS BORING SHIT
 
