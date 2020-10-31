@@ -188,3 +188,29 @@ kali      984604  0.0  0.0   6088   836 pts/2    S+   21:07   0:00 grep firefox
 ```
 kali@kali:~$ kill 984396
 ```
+
+### 3.7.2.1 Exercises (page 69)
+1. Start your apache2 web service and access it locally while monitoring its access.log file in real-time.
+Start it:
+```
+$ /etc/init.d/apache2 start
+```
+Monitor access:
+```
+$ tail -f /var/log/apache2/access.log 
+::1 - - [30/Oct/2020:22:37:53 -0400] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+::1 - - [30/Oct/2020:22:37:53 -0400] "GET /icons/openlogo-75.png HTTP/1.1" 200 6040 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+::1 - - [30/Oct/2020:22:37:53 -0400] "GET /favicon.ico HTTP/1.1" 404 487 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+::1 - - [30/Oct/2020:22:38:20 -0400] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+::1 - - [30/Oct/2020:22:38:20 -0400] "GET /icons/openlogo-75.png HTTP/1.1" 304 181 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+```
+
+2. Use a combination of watch and ps to monitor the most CPU-intensive processes on your Kali machine in a terminal window; launch different applications to see how the list changes in real time.
+
+Takes the 20 with greatest CPU percentage usage:
+```
+watch $'ps aux | tail -n +2 | awk \'{print $3, $11}\' | sort -k1 -r | head -n20'
+```
+
+
+
