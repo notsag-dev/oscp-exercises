@@ -236,3 +236,5 @@ export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTTIMEFORMAT='%c'
 ```
+
+### 4.1.4.3 (page 81) (Netcat exercises, do them!)
