@@ -212,5 +212,12 @@ Takes the 20 with greatest CPU percentage usage:
 watch $'ps aux | tail -n +2 | awk \'{print $3, $11}\' | sort -k1 -r | head -n20'
 ```
 
+### 3.8.3.1 (page 71)
+Download the PoC code for an exploit from https://www.exploit-db.com using curl, wget, and axel, saving each download with a different name.
+```
+wget -O wget_example_exploit.py https://www.exploit-db.com/download/48977
+curl -o curl_example_exploit.py https://www.exploit-db.com/download/48977
+axel -a -n 20 -oaxel_example_exploit.py https://www.exploit-db.com/download/48977
+```
 
 
