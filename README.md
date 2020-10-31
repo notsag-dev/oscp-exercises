@@ -153,3 +153,38 @@ kali@kali:~/pwk/scans$ diff -u 10.11.1.118_scan_01.txt 10.11.1.118_scan_02.txt
 ```
 Analyzing the results it is clear that the server was down for the first run of nmap and up for the second one.
 
+## 3.6.3.1 Exercises (page 68)
+1. Find files that have changed on your Kali virtual machine within the past 7 days by running a specific command in the background.
+```
+kali@kali:~$ find / -type f -mtime -7 -exec ls {} \; >> modified_last_7_days.txt 2> /dev/null &
+[1] 731801
+```
+2. Re-run the previous command and suspend it; once suspended, background it:
+Run it again:
+```
+kali@kali:~$ find / -type f -mtime -7 -exec ls {} \; >> modified_last_7_days_2.txt 2> /dev/null
+^Z
+[2]+  Stopped                 find / -type f -mtime -7 -exec ls {} \; >> modified_last_7_days_2.txt 2> /dev/null
+kali@kali:~$ bg
+[2]+ find / -type f -mtime -7 -exec ls {} \; >> modified_last_7_days_2.txt 2> /dev/null &
+```
+
+3. Bring the previous background job into the foreground.
+```
+kali@kali:~$ fg %1
+find / -type f -mtime -7 -exec ls {} \; >> modified_last_7_days.txt 2> /dev/null
+```
+
+4. Start the Firefox browser on your Kali system. Use ps and grep to identify Firefox’s PID.
+```
+kali      984396 45.5  4.0 2806756 330956 ?      Sl   21:07   0:02 /usr/lib/firefox-esr/firefox-esr
+kali      984505 25.5  2.1 33926156 172324 ?     Sl   21:07   0:01 /usr/lib/firefox-esr/firefox-esr -contentproc -childID 2 -isForBrowser -prefsLen 5670 -prefMapSize 183024 -parentBuildID 20200622191537 -greomni /usr/lib/firefox-esr/omni.ja -appomni /usr/lib/firefox-esr/browser/omni.ja -appdir /usr/lib/firefox-esr/browser 984396 true tab
+kali      984547 15.0  1.9 2443948 158084 ?      Sl   21:07   0:00 /usr/lib/firefox-esr/firefox-esr -contentproc -childID 3 -isForBrowser -prefsLen 6402 -prefMapSize 183024 -parentBuildID 20200622191537 -greomni /usr/lib/firefox-esr/omni.ja -appomni /usr/lib/firefox-esr/browser/omni.ja -appdir /usr/lib/firefox-esr/browser 984396 true tab
+kali      984583  4.6  0.8 2365740 68900 ?       Sl   21:07   0:00 /usr/lib/firefox-esr/firefox-esr -contentproc -childID 4 -isForBrowser -prefsLen 6402 -prefMapSize 183024 -parentBuildID 20200622191537 -greomni /usr/lib/firefox-esr/omni.ja -appomni /usr/lib/firefox-esr/browser/omni.ja -appdir /usr/lib/firefox-esr/browser 984396 true tab
+kali      984604  0.0  0.0   6088   836 pts/2    S+   21:07   0:00 grep firefox
+```
+
+5. Terminate Firefox from the command line using its PID.
+```
+kali@kali:~$ kill 984396
+```
