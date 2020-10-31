@@ -220,4 +220,19 @@ curl -o curl_example_exploit.py https://www.exploit-db.com/download/48977
 axel -a -n 20 -oaxel_example_exploit.py https://www.exploit-db.com/download/48977
 ```
 
+### 3.9.3.1 (page 72)
+1) Create an alias named “..” to change to the parent directory and make it persistent across terminal sessions.
 
+Add to ~/.bashrc:
+```
+alias ..="cd .."
+```
+
+2) Permanently configure the history command to store 10000 entries and include the full date in its output.
+
+Add to .bashrc:
+```
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTTIMEFORMAT='%c'
+```
