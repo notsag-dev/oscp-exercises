@@ -238,3 +238,4 @@ export HISTTIMEFORMAT='%c'
 ```
 
 ### 4.1.4.3 (page 81) (Netcat exercises, do them!)
+### 4.2.4.1 Exercises (page 85) (Socat exercises, do them!)
