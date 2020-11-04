@@ -247,7 +247,7 @@ d. Bind shell on Windows. Use your Kali machine to connect to it.
 3. Transfer a file from your Kali machine to Windows and vice versa.
 4. Conduct the exercises again with the firewall enabled on your Windows system. Adapt the exercises as necessary to work around the firewall protection and understand what portions of the exercise can no longer be completed successfully.
 
-### 4.2.4.1 (page 85) (Socat exercises, do them!)
+### 4.2.4.1 (page 85)
 1. Use socat to transfer powercat.ps1 from your Kali machine to your Windows system. Keep the file on your system for use in the next section.
 
 Make the script available from Kali on port 80:
