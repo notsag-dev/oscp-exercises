@@ -472,4 +472,7 @@ By doing a google search to exclude html files on the MegaCorp One site: `site:w
 3. What other MegaCorp One employees can you identify that are not listed on www.megacorpone.com?
 There are some pictures at `http://www.megacorpone.com/assets/img/team/orig/` that are not listed on the page.
 
+### 6.5.1.1 (page 148)
+1. Use Netcraft to determine what application server is running on www.megacorpone.com.
 
+In the report for megacorpone.com, under the Site Technology > Application Servers, it's possible to see that the server is running a Apache web server.
