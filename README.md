@@ -415,11 +415,45 @@ $encoded = "{{payload_contents}}"
 powershell -EncodedCommand $encoded
 ```
 
-### 4.4.5.1 (page 99) (WIRESHARK - DO IT!!!)
+### 4.4.5.1 (page 99) (WIRESHARK - IT NEEDS THE LAB!!!)
 1. Use Wireshark to capture network activity while attempting to connect to 10.11.1.217 on port 110 using Netcat, and then attempt to log into it.
 2. Read and understand the output. Where is the three-way handshake happening? Where is the connection closed?
 3. Follow the TCP stream to read the login attempt.
 4. Use the display filter to only monitor traffic on port 110.
 5. Run a new session, this time using the capture filter to only collect traffic on port 110.
+
+### 4.5.3.1 (page 104, DEPENDS ON WIRESHARK)
+1. Use tcpdump to recreate the Wireshark exercise of capturing traffic on port 110.
+2. Use the -X flag to view the content of the packet. If data is truncated, investigate how the -s
+flag might help.
+3. Find all ‘SYN’, ‘ACK’, and ‘RST’ packets in the password_cracking_filtered.pcap file.
+4. An alternative syntax is available in tcpdump where you can use a more user-friendly filter to display only ACK and PSH packets. Explore this syntax in the tcpdump manual by searching for “tcpflags”. Come up with an equivalent display filter using this syntax to filter ACK and PSH packets.
+
+### 5.7.3.1 Bash (page 133)
+1. Research Bash loops and write a short script to perform a ping sweep of your target IP range of 10.11.1.0/24.
+2. Try to do the above exercise with a higher-level scripting language such as Python, Perl, or Ruby.
+## do these 2 above that depend on the lab
+
+3. Use the practical examples in this module to help you create a Bash script that extracts JavaScript files from the access_log.txt file (http://www.offensive-security.com/pwk-files/access_log.txt.gz). Make sure the file names DO NOT include the path, are unique, and are sorted.
+```
+$ grep -o '[^/]*\.js ' access_log.txt | sort | uniq
+jquery.js
+jquery.jshowoff.min.js
+jquery.jshowoff2.js
+```
+
+4. Re-write the previous exercise in another language such as Python, Perl, or Ruby.
+In Python, just printing file names to console:
+```
+import re
+
+with open('access_log.txt', 'r') as f:
+    data = f.read()
+    files_with_dups = re.findall('[^/]*\.js ', data);
+    files = list(set(files_with_dups))
+    files.sort()
+    print(files)
+```
+
 
 
