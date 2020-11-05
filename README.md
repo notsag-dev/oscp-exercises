@@ -455,5 +455,19 @@ with open('access_log.txt', 'r') as f:
     print(files)
 ```
 
+### 6.4.1.1 (page 145)
+1. Who is the VP of Legal for MegaCorp One and what is their email address?
+The first result when googling "VP of Legal MegaCorp One" is the [contact page](https://www.megacorpone.com/contact.html) which contains the VP of Legal's contact info:
+```
+Name: Mike Carlow
+Title: VP Of Legal
+Email: mcarlow@megacorpone.com
+```
+
+2. Use Google dorks (either your own or any from the GHDB) to search www.megacorpone.com for interesting documents.
+By doing a google search to exclude html files on the MegaCorp One site: `site:www.megacorpone.com -filetype:html`, some interesting results such as images that do not appear on the site plus [the old site](http://www.megacorpone.com/old-site/).
+
+3. What other MegaCorp One employees can you identify that are not listed on www.megacorpone.com?
+There are some pictures at `http://www.megacorpone.com/assets/img/team/orig/` that are not listed on the page.
 
 
