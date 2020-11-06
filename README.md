@@ -516,3 +516,20 @@ Commits.....: 3
 Repositories: 2
 Targets.....: 1
 ```
+### 6.12.1.1 The Harvester (page 166)
+1. Use theHarvester to enumerate emails addresses for megacorpone.com.
+
+Found from several sources:
+```
+first@megacorpone.com
+joe@megacorpone.com
+mcarlow@megacorpone.com
+msmith@megacorpone.com
+pixel-1604636320688901-web-@megacorpone.com
+```
+
+2. Experiment with different data sources (-b). Which ones work best for you?
+
+Regarding email addresses the top data source was Google. In spite of that, other options that require api key could eventually score better.
+
+Regarding hosts Hackertarget, Sublister and Rapiddns where the top ones.
