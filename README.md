@@ -533,3 +533,14 @@ pixel-1604636320688901-web-@megacorpone.com
 Regarding email addresses the top data source was Google. In spite of that, other options that require api key could eventually score better.
 
 Regarding hosts Hackertarget, Sublister and Rapiddns where the top ones.
+
+### 6.13.2.1 (page 167)
+1. Use any of the social media tools previously discussed to identify additional MegaCorp One employees.
+From social searcher it was possible to identify:
+- Jason Lewis, PMP, CISSP (Cybersecurity Operations and Project Manager) - Linkedin
+- William Adler @RealWillAdler (Intern at MegaCorpOne) - Twitter
+- Handy McKay (Recruiter) - Rocketreach
+- Fred Ducasse (Investments) - Rocketreach
+- Stan Denvers (Collections) - Rocketreach
+
+
