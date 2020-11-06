@@ -481,7 +481,7 @@ In the report for megacorpone.com, under the Site Technology > Application Serve
 1. Search Megacorpone’s GitHub repos for interesting or sensitive information.
 Megacorpone's account on Github is megacorpone, that contains 2 repos: megacorpone.com and git-test.
 
-megacorpone.com has sensitive information publicly available in the file xampp.users, that contains a username (trivera) and a password hash.
+megacorpone.com has sensitive information publicly available in the file xampp.users, that contains a username (trivera) and a password hash, as the course book already states.
 
 Gitleak execution found no leaks for both repositories:
 ```
@@ -492,4 +492,27 @@ INFO[2020-11-05T22:14:09-03:00] No leaks detected. 2 commits scanned in 254 mill
 $ gitleaks --repo=https://github.com/megacorpone/git-test
 INFO[2020-11-05T22:16:57-03:00] cloning... https://github.com/megacorpone/git-test
 INFO[2020-11-05T22:16:59-03:00] No leaks detected. 1 commits scanned in 5 milliseconds 800 microseconds
+```
+
+Gitrob does not find anything either:
+```
+$ GITROB_ACCESS_TOKEN={{myaccesstoken}} ./gitrob megacorpone
+        _ __           __
+  ___ _(_) /________  / /
+ / _ `/ / __/ __/ _ \/ _ \
+ \_, /_/\__/_/  \___/_.__/
+/___/ by @michenriksen
+
+gitrob v2.0.0-beta started at 2020-11-05T23:38:07-03:00
+Loaded 91 signatures
+Web interface available at http://127.0.0.1:9393
+Gathering targets...
+ Retrieved 2 repositories from megacorpone
+Analyzing 2 repositories...
+
+Findings....: 0
+Files.......: 62
+Commits.....: 3
+Repositories: 2
+Targets.....: 1
 ```
