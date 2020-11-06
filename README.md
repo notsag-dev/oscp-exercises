@@ -476,3 +476,20 @@ There are some pictures at `http://www.megacorpone.com/assets/img/team/orig/` th
 1. Use Netcraft to determine what application server is running on www.megacorpone.com.
 
 In the report for megacorpone.com, under the Site Technology > Application Servers, it's possible to see that the server is running a Apache web server.
+
+### 6.7.1.1 Open Source (page 158)
+1. Search Megacorpone’s GitHub repos for interesting or sensitive information.
+Megacorpone's account on Github is megacorpone, that contains 2 repos: megacorpone.com and git-test.
+
+megacorpone.com has sensitive information publicly available in the file xampp.users, that contains a username (trivera) and a password hash.
+
+Gitleak execution found no leaks for both repositories:
+```
+$ gitleaks --repo=https://github.com/megacorpone/megacorpone.com
+INFO[2020-11-05T22:14:01-03:00] cloning... https://github.com/megacorpone/megacorpone.com
+INFO[2020-11-05T22:14:09-03:00] No leaks detected. 2 commits scanned in 254 milliseconds 966 microseconds
+
+$ gitleaks --repo=https://github.com/megacorpone/git-test
+INFO[2020-11-05T22:16:57-03:00] cloning... https://github.com/megacorpone/git-test
+INFO[2020-11-05T22:16:59-03:00] No leaks detected. 1 commits scanned in 5 milliseconds 800 microseconds
+```
