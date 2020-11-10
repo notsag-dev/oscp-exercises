@@ -555,10 +555,11 @@ megacorpone.com name server ns1.megacorpone.com.
 
 2. Write a small script to attempt a zone transfer from megacorpone.com using a higher-level scripting language such as Python, Perl, or Ruby
 ```
-import dns.exception
+import sys
 import dns.query
 import dns.resolver
 import dns.zone
+import dns.exception
 import socket
 
 host = sys.argv[1]
@@ -571,14 +572,50 @@ def zone_transfer(host_name):
         try:
             zone_transfer = dns.zone.from_xfr(dns.query.xfr(ipaddrlist[0], host_name))
             names = zone_transfer.nodes.keys()
+            print(f'Zone transfer for server {server} with ip {ipaddrlist[0]}:')
             for n in names:
                 print(zone_transfer[n].to_text(n))
         except:
-            print(f'Zone transfer failed for name server {server} with ip {ipaddrlist[0]}')
+            print(f'Zone transfer failed for server {server} with ip {ipaddrlist[0]}')
             continue
-            
+
 if __name__ == '__main__':
     zone_transfer(sys.argv[1])
+```
+
+The result of executing it:
+```
+Zone transfer for server ns2.megacorpone.com. with ip 3.211.51.86:
+@ 259200 IN SOA ns1 admin 202007073 28800 7200 2419200 86400
+@ 259200 IN TXT "Try Harder"
+@ 259200 IN TXT "google-site-verification=U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA"
+@ 259200 IN MX 10 fb.mail.gandi.net.
+@ 259200 IN MX 20 spool.mail.gandi.net.
+@ 259200 IN MX 50 mail
+@ 259200 IN MX 60 mail2
+@ 259200 IN NS ns1
+@ 259200 IN NS ns2
+@ 259200 IN NS ns3
+admin 259200 IN A 3.220.61.179
+beta 259200 IN A 3.220.61.179
+fs1 259200 IN A 3.220.61.179
+intranet 259200 IN A 3.220.61.179
+mail 259200 IN A 3.220.61.179
+mail2 259200 IN A 3.220.61.179
+ns1 259200 IN A 3.220.61.179
+ns2 259200 IN A 3.211.51.86
+ns3 259200 IN A 3.212.85.86
+router 259200 IN A 3.220.61.179
+siem 259200 IN A 3.220.61.179
+snmp 259200 IN A 3.220.61.179
+support 259200 IN A 3.212.85.86
+syslog 259200 IN A 3.220.61.179
+test 259200 IN A 3.220.61.179
+vpn 259200 IN A 3.220.61.179
+www 259200 IN A 3.220.87.155
+www2 259200 IN A 3.220.61.179
+Zone transfer failed for server ns3.megacorpone.com. with ip 3.212.85.86
+Zone transfer failed for server ns1.megacorpone.com. with ip 3.220.61.179
 ```
 
 3. Recreate the example above and use dnsrecon to attempt a zone transfer from megacorpone.com.
