@@ -543,4 +543,142 @@ From social searcher it was possible to identify:
 - Fred Ducasse (Investments) - Rocketreach
 - Stan Denvers (Collections) - Rocketreach
 
+### 7.1.6.3 DNS (page 179)
+1. Find the DNS servers for the megacorpone.com domain
+Assuming that by "DNS servers" it means just NS servers:
+```
+$ host -t NS megacorpone.com
+megacorpone.com name server ns2.megacorpone.com.
+megacorpone.com name server ns3.megacorpone.com.
+megacorpone.com name server ns1.megacorpone.com.
+```
 
+2. Write a small script to attempt a zone transfer from megacorpone.com using a higher-level scripting language such as Python, Perl, or Ruby
+```
+import dns.exception
+import dns.query
+import dns.resolver
+import dns.zone
+import socket
+
+host = sys.argv[1]
+
+def zone_transfer(host_name):
+    dns_servers = dns.resolver.resolve(host_name, 'NS')
+    for server_data in dns_servers:
+        server = server_data.to_text()
+        _, _, ipaddrlist = socket.gethostbyname_ex(server)
+        try:
+            zone_transfer = dns.zone.from_xfr(dns.query.xfr(ipaddrlist[0], host_name))
+            names = zone_transfer.nodes.keys()
+            for n in names:
+                print(zone_transfer[n].to_text(n))
+        except:
+            print(f'Zone transfer failed for name server {server} with ip {ipaddrlist[0]}')
+            continue
+            
+if __name__ == '__main__':
+    zone_transfer(sys.argv[1])
+```
+
+3. Recreate the example above and use dnsrecon to attempt a zone transfer from megacorpone.com.
+```
+kali@kali$ dnsrecon -d megacorpone.com -a
+[*] Performing General Enumeration of Domain: megacorpone.com
+[*] Checking for Zone Transfer for megacorpone.com name servers
+[*] Resolving SOA Record
+[*] Resolving NS Records
+[*] NS Servers found:
+[*] 	NS ns2.megacorpone.com 3.211.51.86
+[*] 	NS ns3.megacorpone.com 3.212.85.86
+[*] 	NS ns1.megacorpone.com 3.220.61.179
+[*] Removing any duplicate NS server IP Addresses...
+[*]  
+[*] Trying NS server 3.220.61.179
+[+] [['NS', 'ns2.megacorpone.com', '3.211.51.86'], ['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179']] Has port 53 TCP Open
+[-] Zone Transfer Failed!
+[-] Zone transfer error: REFUSED
+[*]  
+[*] Trying NS server 3.211.51.86
+[+] [['NS', 'ns2.megacorpone.com', '3.211.51.86'], ['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179']] Has port 53 TCP Open
+[+] Zone Transfer was successful!!
+[*] 	 NS ns1.megacorpone.com 3.220.61.179
+[*] 	 NS ns2.megacorpone.com 3.211.51.86
+[*] 	 NS ns3.megacorpone.com 3.212.85.86
+[*] 	 TXT Try Harder
+[*] 	 TXT google-site-verification=U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA
+[*] 	 MX @.megacorpone.com fb.mail.gandi.net 217.70.178.217
+[*] 	 MX @.megacorpone.com spool.mail.gandi.net 217.70.178.1
+[*] 	 A admin.megacorpone.com 3.220.61.179
+[*] 	 A beta.megacorpone.com 3.220.61.179
+[*] 	 A fs1.megacorpone.com 3.220.61.179
+[*] 	 A intranet.megacorpone.com 3.220.61.179
+[*] 	 A mail.megacorpone.com 3.220.61.179
+[*] 	 A mail2.megacorpone.com 3.220.61.179
+[*] 	 A ns1.megacorpone.com 3.220.61.179
+[*] 	 A ns2.megacorpone.com 3.211.51.86
+[*] 	 A ns3.megacorpone.com 3.212.85.86
+[*] 	 A router.megacorpone.com 3.220.61.179
+[*] 	 A siem.megacorpone.com 3.220.61.179
+[*] 	 A snmp.megacorpone.com 3.220.61.179
+[*] 	 A support.megacorpone.com 3.212.85.86
+[*] 	 A syslog.megacorpone.com 3.220.61.179
+[*] 	 A test.megacorpone.com 3.220.61.179
+[*] 	 A vpn.megacorpone.com 3.220.61.179
+[*] 	 A www.megacorpone.com 3.220.87.155
+[*] 	 A www2.megacorpone.com 3.220.61.179
+[*]  
+[*] Trying NS server 3.212.85.86
+[+] [['NS', 'ns2.megacorpone.com', '3.211.51.86'], ['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179']] Has port 53 TCP Open
+[-] Zone Transfer Failed!
+[-] Zone transfer error: REFUSED
+[*] Checking for Zone Transfer for megacorpone.com name servers
+[*] Resolving SOA Record
+[*] Resolving NS Records
+[*] NS Servers found:
+[*] 	NS ns3.megacorpone.com 3.212.85.86
+[*] 	NS ns1.megacorpone.com 3.220.61.179
+[*] 	NS ns2.megacorpone.com 3.211.51.86
+[*] Removing any duplicate NS server IP Addresses...
+[*]  
+[*] Trying NS server 3.220.61.179
+[+] [['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179'], ['NS', 'ns2.megacorpone.com', '3.211.51.86']] Has port 53 TCP Open
+[-] Zone Transfer Failed!
+[-] Zone transfer error: REFUSED
+[*]  
+[*] Trying NS server 3.211.51.86
+[+] [['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179'], ['NS', 'ns2.megacorpone.com', '3.211.51.86']] Has port 53 TCP Open
+[+] Zone Transfer was successful!!
+[*] 	 NS ns1.megacorpone.com 3.220.61.179
+[*] 	 NS ns2.megacorpone.com 3.211.51.86
+[*] 	 NS ns3.megacorpone.com 3.212.85.86
+[*] 	 TXT Try Harder
+[*] 	 TXT google-site-verification=U7B_b0HNeBtY4qYGQZNsEYXfCJ32hMNV3GtC0wWq5pA
+[*] 	 MX @.megacorpone.com fb.mail.gandi.net 217.70.178.217
+[*] 	 MX @.megacorpone.com spool.mail.gandi.net 217.70.178.1
+[*] 	 A admin.megacorpone.com 3.220.61.179
+[*] 	 A beta.megacorpone.com 3.220.61.179
+[*] 	 A fs1.megacorpone.com 3.220.61.179
+[*] 	 A intranet.megacorpone.com 3.220.61.179
+[*] 	 A mail.megacorpone.com 3.220.61.179
+[*] 	 A mail2.megacorpone.com 3.220.61.179
+[*] 	 A ns1.megacorpone.com 3.220.61.179
+[*] 	 A ns2.megacorpone.com 3.211.51.86
+[*] 	 A ns3.megacorpone.com 3.212.85.86
+[*] 	 A router.megacorpone.com 3.220.61.179
+[*] 	 A siem.megacorpone.com 3.220.61.179
+[*] 	 A snmp.megacorpone.com 3.220.61.179
+[*] 	 A support.megacorpone.com 3.212.85.86
+[*] 	 A syslog.megacorpone.com 3.220.61.179
+[*] 	 A test.megacorpone.com 3.220.61.179
+[*] 	 A vpn.megacorpone.com 3.220.61.179
+[*] 	 A www.megacorpone.com 3.220.87.155
+[*] 	 A www2.megacorpone.com 3.220.61.179
+[*]  
+[*] Trying NS server 3.212.85.86
+[+] [['NS', 'ns3.megacorpone.com', '3.212.85.86'], ['NS', 'ns1.megacorpone.com', '3.220.61.179'], ['NS', 'ns2.megacorpone.com', '3.211.51.86']] Has port 53 TCP Open
+[-] Zone Transfer Failed!
+[-] Zone transfer error: REFUSED
+[-] DNSSEC is not configured for megacorpone.com
+[*] 	 NS ns1.megacorpone.com 3.220.61.179
+```
