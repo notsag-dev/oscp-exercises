@@ -727,3 +727,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 4. Use Wireshark to capture a Nmap connect and UDP scan and compare it against the Netcat port scans. Are they the same or different?
 5. Use Wireshark to capture a Nmap SYN scan and compare it to a connect scan and identify the difference between them.
 
+### 7.3.2.1 (page 197) (TODO)
+1. Use Nmap to make a list of the SMB servers in the lab that are running Windows.
+2. Use NSE scripts to scan these systems for SMB vulnerabilities.
+3. Use nbtscan and enum4linux against these systems to identify the types of data you can obtain from different versions of Windows.
