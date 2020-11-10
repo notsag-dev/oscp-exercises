@@ -731,3 +731,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 1. Use Nmap to make a list of the SMB servers in the lab that are running Windows.
 2. Use NSE scripts to scan these systems for SMB vulnerabilities.
 3. Use nbtscan and enum4linux against these systems to identify the types of data you can obtain from different versions of Windows.
+
+### 7.4.2.1 Exercises
+1. Use Nmap to make a list of machines running NFS in the labs.
+2. Use NSE scripts to scan these systems and collect additional information about accessible shares.
