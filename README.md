@@ -760,3 +760,6 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 
 ### 8.3.1.1 Vuln with Nmap (page 239) (TODO)
 1. Find an NSE script similar to the NFS Exported Share Information Disclosure that was executed in the “Scanning with Individual Nessus Plugins” section. Once found, run the script against Beta in the PWK labs.
+
+### 9.3.4.1 Web app assessment (page 274)
+1. Spend some time reviewing the applications available under the Web Application Analysis menu in Kali Linux.
