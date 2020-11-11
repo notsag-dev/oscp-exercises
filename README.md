@@ -744,5 +744,11 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 1. Scan your target network with onesixtyone to identify any SNMP servers.
 2. Use snmpwalk and snmp-check to gather information about the discovered targets.
 
+### 8.2.4.2 Nessus (page 226)
+1. Follow the steps above to create your own unauthenticated scan of Gamma.
+2. Run the scan with Wireshark open and identify the steps the scanner performed to completed the scan.
+3. Review the results of the scan.
 
-
+### 8.2.5.2 Exercises (page 230)
+1. Follow the steps above to create your own authenticated scan of your Debian client.
+2. Review the results of the scan.
