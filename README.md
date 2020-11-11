@@ -740,3 +740,9 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 1. Search your target network range to see if you can identify any systems that respond to the SMTP VRFY command.
 2. Try using this Python code to automate the process of username discovery using a text file with usernames as input.
 
+### 7.6.3.6 SNMP (page 205) (TODO)
+1. Scan your target network with onesixtyone to identify any SNMP servers.
+2. Use snmpwalk and snmp-check to gather information about the discovered targets.
+
+
+
