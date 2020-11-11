@@ -735,3 +735,8 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 7.4.2.1 NFS (page 200) (TODO)
 1. Use Nmap to make a list of machines running NFS in the labs.
 2. Use NSE scripts to scan these systems and collect additional information about accessible shares.
+
+### 7.5.1.1 SMTP (page 201) (TODO)
+1. Search your target network range to see if you can identify any systems that respond to the SMTP VRFY command.
+2. Try using this Python code to automate the process of username discovery using a text file with usernames as input.
+
