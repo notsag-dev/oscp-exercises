@@ -752,3 +752,9 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 8.2.5.2 Exercises (page 230)
 1. Follow the steps above to create your own authenticated scan of your Debian client.
 2. Review the results of the scan.
+
+### 8.2.6.1 Exercises (page 236)
+1. Follow the steps above to create your own individual scan of Beta.
+2. Run Wireshark or tcpdump during the individual scan. What other ports does Nessus scan? Why do you think Nessus scans other ports?
+3. Review the results of the scan.
+
