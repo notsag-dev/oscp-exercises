@@ -763,3 +763,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 
 ### 9.3.4.1 Web app assessment (page 274)
 1. Spend some time reviewing the applications available under the Web Application Analysis menu in Kali Linux.
+
+### 9.4.1.3 Burp suite intruder (page 297)
+1. Use Burp Intruder to gain access to the phpMyAdmin site running on your Windows 10 lab machine.
+2. Insert a new user into the “users” table.
