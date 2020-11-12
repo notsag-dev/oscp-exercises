@@ -771,3 +771,4 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 9.4.2.5 XSS (page 309)
 1. Exploit the XSS vulnerability in the sample application to get the admin cookie and hijack the session. Remember to use the PowerShell script on your Windows 10 lab machine to simulate the admin login.
 2. Consider what other ways an XSS vulnerability in this application might be used for attacks.
+3. Does this exploit attack the server or clients of the site?
