@@ -788,3 +788,10 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 9.4.4.10 PHP data wrapper (page 321) 
 1. Exploit the LFI vulnerability using a PHP wrapper.
 2. Use a PHP wrapper to get a shell on your Windows 10 lab machine.
+
+### 9.4.5.4 SQL injection (page 327)
+1. Interact with the MariaDB database and manually execute the commands required to authenticate to the application. Understand the vulnerability.
+2. SQL inject the username field to bypass the login process.
+3. Why is the username displayed like it is in the web application once the authentication process is bypassed?
+4. Execute the SQL injection in the password field. Is the “LIMIT 1” necessary in the payload? Why or why not?
+
