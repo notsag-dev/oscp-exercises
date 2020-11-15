@@ -776,3 +776,11 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 9.4.3.2 Directory traversal (page 312)
 1. Exploit the directory traversal vulnerability to read arbitrary files on your Windows 10 lab machine.
 
+### 9.4.4.5 Local file inclusion (page 316)
+1. Obtain code execution through the use of the LFI attack.
+2. Use the code execution to obtain a full shell.
+
+### 9.4.4.7 Remote file inclusion (page 319)
+1. Exploit the RFI vulnerability in the web application and get a shell.
+2. Using /menu2.php?file=current_menu as a starting point, use RFI to get a shell.
+3. Use one of the webshells included with Kali to get a shell on the Windows 10 target.
