@@ -784,3 +784,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 1. Exploit the RFI vulnerability in the web application and get a shell.
 2. Using /menu2.php?file=current_menu as a starting point, use RFI to get a shell.
 3. Use one of the webshells included with Kali to get a shell on the Windows 10 target.
+
+### 9.4.4.10 PHP data wrapper (page 321) 
+1. Exploit the LFI vulnerability using a PHP wrapper.
+2. Use a PHP wrapper to get a shell on your Windows 10 lab machine.
