@@ -795,3 +795,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 3. Why is the username displayed like it is in the web application once the authentication process is bypassed?
 4. Execute the SQL injection in the password field. Is the “LIMIT 1” necessary in the payload? Why or why not?
 
+### 9.4.5.9 SQL injection (page 338)
+1. Enumerate the structure of the database using SQL injection.
+2. Understand how and why you can pull data from your injected commands and have it displayed on the screen.
+3. Extract all users and associated passwords from the database.
