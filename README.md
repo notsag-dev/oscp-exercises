@@ -803,3 +803,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 ### 9.4.5.11 SQL injection (page 340)
 1. Exploit the SQL injection along with the MariaDB INTO OUTFILE function to obtain code execution.
 2. Turn the simple code execution into a full shell.
+
+### 9.4.5.13 SQL injection (page 343)
+1. Use sqlmap to obtain a full dump of the database.
+2. Use sqlmap to obtain an interactive shell.
