@@ -799,3 +799,7 @@ kali@kali$ dnsrecon -d megacorpone.com -a
 1. Enumerate the structure of the database using SQL injection.
 2. Understand how and why you can pull data from your injected commands and have it displayed on the screen.
 3. Extract all users and associated passwords from the database.
+
+### 9.4.5.11 SQL injection (page 340)
+1. Exploit the SQL injection along with the MariaDB INTO OUTFILE function to obtain code execution.
+2. Turn the simple code execution into a full shell.
